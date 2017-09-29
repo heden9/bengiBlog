@@ -1,0 +1,43 @@
+html, body{
+  margin: 0;
+}
+html{
+  font-size: 100px;
+}
+html, body, :global(#root) {
+  height: 100%;
+  *{
+    -webkit-font-smoothing: antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  a{
+    text-decoration: none;
+  }
+  .wrapper{
+    margin: 0 auto;
+    max-width: 980px;
+    width: 100%;
+    height: 100%;
+  }
+}
+:global(#root) {
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  html{
+    font-size: 60px;
+  }
+  :global(#root) {
+    .title {
+      font-size: 15px;
+    }
+  }
+}
+@media (max-width: 991px){
+  :global(#root) {
+    .menu-button {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.test{
+  height: 500px;
+  width: 100%;
+  //background-attachment: fixed;
+  //background: url('../../assets/antv.jpg') center center/cover;
+}
+.home-container {
+  .home-content {
+
+    .article-list {
+      margin-top: 30px;
+      .article-item{
+        .article-title {
+          display: block;
+          font-size: 17px;
+          color: #333333;
+          transition: color .5s;
+          font-weight: bold;
+          &:hover {
+            color: #108ee9;
+          }
+        }
+        .item-bar {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          font-size: 12px;
+          .icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+          }
+        }
+        box-sizing: border-box;
+        padding: 10px 0;
+        margin: 0 20px;
+        border-bottom: 1px solid #eee;
+        .word {
+          color: rgba(0, 0, 0, 0.65);
+          display: block;
+          margin: 5px 0;
+          font-size: 13px;
+          text-overflow: ellipsis;
+          max-height: 152px;
+          overflow: hidden;
+        }
+        time {
+          color: #acacac;
+          font-size: 12px;
+        }
+        &:last-child {
+
+        }
+      }
+    }
+  }
+}
