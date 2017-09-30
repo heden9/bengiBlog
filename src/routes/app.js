@@ -1,19 +1,28 @@
 import React from 'react';
 import { Link } from 'dva/router';
+import { connect } from 'dva';
+import classnames from 'classnames';
 import { Row, Col, Icon, Menu, Dropdown } from 'antd';
 import menuIcon from '../assets/svg/menu.svg';
 import './app.less';
 
 
-export default function App({ children }) {
+function App({ children, isNavbar }) {
   return (
     <div>
-      <Navigation />
+      <Navigation isNavbar={isNavbar} />
       <div className="margin-top" />
       {children}
     </div>
   );
 }
+function mapStateToProps({ app: { isNavbar } }) {
+  return {
+    isNavbar,
+  };
+}
+export default connect(mapStateToProps)(App);
+
 const dropMenu = (
   <Menu>
     <Menu.Item>
@@ -34,14 +43,18 @@ const dropMenu = (
   </Menu>
 );
 
-function Navigation() {
-  const document = document;
+function Navigation({ isNavbar }) {
   return (
-    <header className="navigation">
+    <header
+      className={classnames({
+        navigation: true,
+        isHide: !isNavbar,
+      })}
+    >
       <div className="wrapper">
         <Row type="flex" align="middle" justify="space-between">
           <Col lg={5} md={5} sm={24} xs={24}>
-            <div className="title-container" id="menu-parent">
+            <div className="title-container">
               <Link to="" className="title">
                 {'BENGI\'S BLOG'}
               </Link>
@@ -50,7 +63,7 @@ function Navigation() {
                 overlay={dropMenu}
                 trigger={['click']}
               >
-                <div className="menu-button">
+                <div className="menu-button" id="menu-parent">
                   <img src={menuIcon} alt="" />
                 </div>
               </Dropdown>

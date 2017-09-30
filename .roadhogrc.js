@@ -7,7 +7,7 @@ const svgSpriteDirs = [
 
 export default {
   entry: 'src/index.js',
-  svgSpriteLoaderDirs: svgSpriteDirs,
+  // svgSpriteLoaderDirs: svgSpriteDirs,
   disableCSSModules: true,
   // 接口代理示例
   proxy: {

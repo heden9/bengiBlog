@@ -1,0 +1,40 @@
+@import "../../themes/color";
+.article-list {
+  margin-top: 30px;
+  .article-item{
+    .item-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 12px;
+      .icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+    }
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid @border-color;
+    .word {
+      display: block;
+      margin: 5px 0;
+      text-overflow: ellipsis;
+      max-height: 152px;
+      overflow: hidden;
+    }
+    time {
+      color: @time-color;
+      font-size: 12px;
+    }
+    &:last-child {
+
+    }
+  }
+  .pagination {
+    padding: 20px 10px 10px 10px;
+    display: flex;
+    flex-direction: row;
+  }
+}

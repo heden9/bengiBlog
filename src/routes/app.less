@@ -8,6 +8,10 @@
   background-color: rgba(45, 48, 57, 0.71);
   border-bottom: 1px #1a1b23 solid;
   text-align: center;
+  transition: all .3s;
+  &.isHide {
+    transform: translate3d(0,-100%,0);
+  }
   .title-container{
     display: flex;
     height: @height;

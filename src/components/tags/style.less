@@ -1,0 +1,38 @@
+@import "../../themes/color";
+.tag-menu {
+  &:first-child {
+    //border-top: 1px solid @border-color;
+    margin-top: 45px;
+  }
+  border-top: 1px solid @border-color;
+  padding-top: 10px;
+  .article-title {
+    margin-bottom: 15px;
+    color: #5d5d5d;
+    &:hover {
+      color: @hover-blue;
+    }
+  }
+  >.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    .tag-item {
+      box-sizing: border-box;
+      padding: 0 8px;
+      margin: 5px 5px 5px 0;
+      color: @deep-gray;
+      font-size: 14px;
+      line-height: 28px;
+      border: 1px solid @deep-border-color;
+      border-radius: 20px;
+      transition: all .3s cubic-bezier(.215,.61,.355,1);
+      &:hover {
+        color: white;
+        background: @deep-blue;
+        border-color: @deep-blue;
+      }
+    }
+  }
+}
