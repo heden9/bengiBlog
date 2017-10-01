@@ -25,6 +25,11 @@
       letter-spacing: 5px;
       //font-family: "Open Sans", "Trebuchet MS", Arial, sans-serif;
       cursor: pointer;
+      >img {
+        width: 20px;
+        vertical-align: sub;
+        margin-right: 8px;
+      }
       &:hover{
         color: @banner-text-color;
       }
@@ -72,9 +77,51 @@
       line-height: @height;
       padding: 0 25px;
       height: 100%;
+      &:hover {
+        color: @hover-blue;
+      }
+      &.active {
+        color: @hover-blue;
+      }
     }
   }
 }
-//@media (max) {
-//
-//}
+.ant-back-top {
+  width: 50px;
+  right: 40px;
+  font-size: 50px;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%);
+    box-shadow: 0 3px 20px 8px rgba(0,0,0,.6);
+  }
+}
+
+.footer {
+  border-top: 1px solid #e0e5e6;
+  background: #f6f8f8;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: @footer-text;
+  >span {
+    margin-top: 5px;
+  }
+  >a {
+    margin-top: 5px;
+    color: @footer-text;
+  }
+  padding: 25px 15px;
+  .icon-font {
+    margin-bottom: -5px;
+    width: 1.5em;
+    height: 1.5em;
+  }
+}

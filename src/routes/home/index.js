@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
-import { Row, Col, Icon } from 'antd';
+import { Row, Col } from 'antd';
 import './style.less';
 import Banner from '../../components/banner';
 import ArticleList from '../../components/articleList';
@@ -25,7 +25,6 @@ function Home({ articleList, tags }) {
           </Row>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
@@ -46,14 +45,7 @@ function AboutMe() {
   );
 }
 
-function Footer() {
-  return (
-    <div className="footer">
-      <span>Copyright © Bengi的博客 2017 | bengiw.com</span>
-      <a href="https://github.com/w771854332/bengiBlog"><IconFont type="code" /> with <Icon type="heart" /> by <b>GitHub</b> <Icon type="github" style={{ fontSize: 15 }} /></a>
-    </div>
-  );
-}
+
 function mapStateToProps({ article: { articleList, tags } }) {
   return {
     articleList,
