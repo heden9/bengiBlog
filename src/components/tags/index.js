@@ -19,8 +19,8 @@ export default function TagMenu({ tags, title }) {
     </div>
   );
 }
-function TagItem({ title }) {
+function TagItem({ title, id }) {
   return (
-    <Link to="" className="tag-item">{title}</Link>
+    <Link to={`/tags#s${id}`} className="tag-item">{title}</Link>
   );
 }

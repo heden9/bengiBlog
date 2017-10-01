@@ -9,30 +9,46 @@ import bengiLogo from '../assets/bengi.png';
 import './app.less';
 
 
-function App({ children, isNavbar }) {
+function App({ children, isNavbar, blueNavbar }) {
   return (
     <div>
-      <Navigation isNavbar={isNavbar} />
+      <Navigation isNavbar={isNavbar} blueNavbar={blueNavbar} />
       <div className="margin-top" />
       {children}
       <BackTop>
         <IconFont type="rocket__easyi-copy" />
       </BackTop>
-      <Footer />
+      <Footer blueNavbar={blueNavbar} />
     </div>
   );
 }
-function Footer() {
+function Footer({ blueNavbar }) {
   return (
-    <div className="footer">
-      <span>Copyright © Bengi的博客 2017 | bengiw.com</span>
-      <a href="https://github.com/w771854332/bengiBlog"><IconFont type="code" /> with <Icon type="heart" /> by <b>GitHub</b> <Icon type="github" style={{ fontSize: 15 }} /></a>
+    <div>
+      <div
+        className={classnames({
+          'footer-icon-group': true,
+          blue: blueNavbar,
+        })}
+      >
+        <Link to=""><IconFont type="weixin" /></Link>
+        <Link to=""><IconFont type="weibo-copy" /></Link>
+        <Link to=""><IconFont type="shareto_qq" /></Link>
+        <Link to=""><IconFont type="github" /></Link>
+        <Link to=""><IconFont type="logo_csdn" /></Link>
+      </div>
+      <div className="footer">
+        <span>Copyright © Bengi的博客 2017 | bengiw.com</span>
+        <a href="https://github.com/w771854332/bengiBlog"><IconFont type="code" /> with <Icon type="heart" /> by <b>GitHub</b> <Icon type="github" style={{ fontSize: 15 }} /></a>
+      </div>
     </div>
+
   );
 }
-function mapStateToProps({ app: { isNavbar } }) {
+function mapStateToProps({ app: { isNavbar, blueNavbar } }) {
   return {
     isNavbar,
+    blueNavbar,
   };
 }
 export default connect(mapStateToProps)(App);
@@ -43,23 +59,24 @@ const dropMenu = (
       <Link to="/tags">Tags</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link to="">React</Link>
+      <Link to="/tags#sreact">React</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link to="">React Native</Link>
+      <Link to="/tags#sreactnative">React Native</Link>
     </Menu.Item>
     <Menu.Item>
-      <Link to="">Contact<Icon type="github" style={{ fontSize: 25, marginLeft: 15 }} /></Link>
+      <a href="https://github.com/w771854332">Contact<Icon type="github" style={{ fontSize: 25, marginLeft: 15 }} /></a>
     </Menu.Item>
   </Menu>
 );
 
-function Navigation({ isNavbar }) {
+function Navigation({ isNavbar, blueNavbar }) {
   return (
     <header
       className={classnames({
         navigation: true,
         isHide: !isNavbar,
+        blue: blueNavbar,
       })}
     >
       <div className="wrapper">
@@ -84,9 +101,9 @@ function Navigation({ isNavbar }) {
           <Col lg={14} md={14} sm={0} xs={0}>
             <div className="menu">
               <Link to="/tags" activeClassName="active">Tags</Link>
-              <Link to="/react" activeClassName="active">React</Link>
-              <Link to="/reactnative" activeClassName="active">React Native</Link>
-              <Link to="/github" activeClassName="active">Contact<Icon type="github" style={{ fontSize: 25, marginLeft: 15 }} /></Link>
+              <Link to="/tags#sreact" >React</Link>
+              <Link to="/tags#sreactnative" >React Native</Link>
+              <a href="https://github.com/w771854332">Contact<Icon type="github" style={{ fontSize: 25, marginLeft: 15 }} /></a>
             </div>
           </Col>
         </Row>

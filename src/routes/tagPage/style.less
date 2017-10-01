@@ -1,5 +1,29 @@
+@import "../../themes/color";
 .test {
   background: url('../../assets/antv.jpg') center center/cover;
   background-attachment: fixed;
   height: 800px;
+}
+.tag-container {
+
+  .tag-menu {
+    border: none;
+    .tag-item {
+      &:hover {
+        color: white;
+        background: @hover-blue;
+        border-color: @hover-blue;
+      }
+    }
+  }
+}
+.detail-list {
+  padding: 10px 0;
+  .list-section {
+    margin-bottom: 10px;
+    .article-title {
+      padding: 10px 0;
+      border-bottom: 1px solid @border-color;
+    }
+  }
 }

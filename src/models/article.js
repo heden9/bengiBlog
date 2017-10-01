@@ -5,6 +5,7 @@ export default {
   namespace: 'article',
 
   state: {
+    version: '',
     articleList: [],
     tags: [],
   },
@@ -12,7 +13,7 @@ export default {
   subscriptions: {
     setupHistory({ dispatch, history }) {  // eslint-disable-line
       return history.listen(({ pathname }) => {
-        if (pathname === '/') {
+        if (pathname === '/' || pathname === '/tags') {
           dispatch({ type: 'fetch' });
         }
       });
@@ -20,9 +21,12 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      const { data: { articleList, tags } } = yield call(query);
-      yield put({ type: 'save', payload: { articleList, tags } });
+    *fetch({ payload }, { call, put, select }) {  // eslint-disable-line
+      const { data: { articleList, tags, version } } = yield call(query);
+      const { currentVersion } = yield select(_ => _.article.version);
+      if (version !== currentVersion) {
+        yield put({ type: 'save', payload: { articleList, tags } });
+      }
     },
   },
 

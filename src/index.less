@@ -41,6 +41,22 @@ html, body, :global(#root) {
     font-size: 15px;
   }
 }
+
+.section-title {
+  margin: 15px 0 10px 0;
+  font-size: 20px;
+  color: @hover-blue;
+  font-weight: 300;
+  img {
+    vertical-align: sub;
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    //width: 30px;
+    //height: 30px;
+  }
+}
+
 @media (max-width: 768px) {
   html{
     font-size: 60px;
@@ -49,16 +65,35 @@ html, body, :global(#root) {
     .title {
       font-size: 15px;
     }
+
   }
 }
+@media (max-width: 444px) {
+  :global(#root) {
+    .title-group {
+      transform: translateY(-60%);
+    }
+    .right-side {
+      transform: translateY(30%);
+    }
+  }
+}
+@tab-margin: 20px;
 @media (max-width: 991px){
   :global(#root) {
     .menu-button {
       display: block;
     }
     .tag-menu {
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-left: @tab-margin;
+      margin-right: @tab-margin;
+    }
+    .detail-list {
+      margin-left: @tab-margin;
+      margin-right: @tab-margin;
+      .list-section .article-title{
+        font-size: 14px;
+      }
     }
     .pagination {
       justify-content: center;
@@ -70,22 +105,7 @@ html, body, :global(#root) {
       }
     }
     .about-me {
-      .word {
-        display: none;
-      }
-      .article-title {
-        display: none;
-      }
-      .icon-group {
-        justify-content: center;
-        font-size: 21px;
-        .icon-font {
-          color: @black-btn;
-          &:hover {
-            color: @deep-blue;
-          }
-        }
-      }
+      display: none;
     }
   }
 }

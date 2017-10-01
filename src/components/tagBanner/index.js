@@ -18,8 +18,8 @@ export default class LogoGather extends React.Component {
   static defaultProps = {
     image: require('../../assets/bengi-blue.png'),
     className: 'logo-gather-demo',
-    w: 300,
-    h: 300,
+    w: 250,
+    h: 250,
     pixSize: 20,
     pointSizeMin: 10,
   };
@@ -171,7 +171,7 @@ export default class LogoGather extends React.Component {
   render() {
     return (<div className="logo-gather-demo-wrapper">
       <svg className="banner-bg-center" width="100%" viewBox="0 0 1200 800">
-        <circle fill="rgba(161,174,245,.15)" r="130" cx="950" cy="250" >
+        <circle fill="rgba(161,174,245,.15)" r="130" cx="360" cy="360" >
           <animateTransform attributeName="transform" begin="0s" dur="50s" type="rotate" values="0 160 160;60 360 760;0 160 160" repeatCount="indefinite"/>
         </circle>
         <circle fill="rgba(120,172,254,.1)" r="80" cx="500" cy="420" >
@@ -179,17 +179,23 @@ export default class LogoGather extends React.Component {
         </circle>
       </svg>
       <canvas id="canvas" />
-      <TweenOne
-        animation={this.state.boxAnim}
-        className="right-side blur"
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
-        ref={(c) => {
-          this.sideBoxComp = c;
-        }}
-      >
-        {this.state.children}
-      </TweenOne>
+      <div className="wrapper">
+        <div className="title-group">
+          <h1>Tags</h1>
+          <h4>If You Can Make It Here<br/> You Can Make It Anywhere</h4>
+        </div>
+        <TweenOne
+          animation={this.state.boxAnim}
+          className="right-side blur"
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          ref={(c) => {
+            this.sideBoxComp = c;
+          }}
+        >
+          {this.state.children}
+        </TweenOne>
+      </div>
     </div>);
   }
 }
