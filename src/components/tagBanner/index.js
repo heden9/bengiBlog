@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import ticker from 'rc-tween-one/lib/ticker';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import './style.less';
 
 export default class LogoGather extends React.Component {
@@ -22,6 +23,7 @@ export default class LogoGather extends React.Component {
     h: 250,
     pixSize: 20,
     pointSizeMin: 10,
+    title: <h1>hello world</h1>
   };
 
   constructor(props) {
@@ -57,7 +59,6 @@ export default class LogoGather extends React.Component {
     }
     this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
   };
-
   setDataToDom(data, w, h) {
     this.pointArray = [];
     const number = this.props.pixSize;
@@ -72,6 +73,10 @@ export default class LogoGather extends React.Component {
     this.pointArray.forEach((item, i) => {
       const r = Math.random() * this.props.pointSizeMin + this.props.pointSizeMin;
       const b = Math.random() * 0.4 + 0.1;
+      let backgroundColor = `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`;
+      if(this.props.redNavbar) {
+        backgroundColor = `rgb(255,${Math.round(Math.random() * 95 + 160)},255)`;
+      }
       children.push(
         <TweenOne className="point-wrapper" key={i} style={{ left: item.x, top: item.y }}>
           <TweenOne
@@ -80,7 +85,7 @@ export default class LogoGather extends React.Component {
               width: r,
               height: r,
               opacity: b,
-              backgroundColor: `rgb(${Math.round(Math.random() * 95 + 160)},255,255)`,
+              backgroundColor,
             }}
             animation={{
               y: (Math.random() * 2 - 1) * 10 || 5,
@@ -169,7 +174,10 @@ export default class LogoGather extends React.Component {
   };
 
   render() {
-    return (<div className="logo-gather-demo-wrapper">
+    return (<div className={classnames({
+      'logo-gather-demo-wrapper': true,
+      red: this.props.redNavbar
+    })}>
       <svg className="banner-bg-center" width="100%" viewBox="0 0 1200 800">
         <circle fill="rgba(161,174,245,.15)" r="130" cx="360" cy="360" >
           <animateTransform attributeName="transform" begin="0s" dur="50s" type="rotate" values="0 160 160;60 360 760;0 160 160" repeatCount="indefinite"/>
@@ -180,10 +188,9 @@ export default class LogoGather extends React.Component {
       </svg>
       <canvas id="canvas" />
       <div className="wrapper">
-        <div className="title-group">
-          <h1>Tags</h1>
-          <h4>If You Can Make It Here<br/> You Can Make It Anywhere</h4>
-        </div>
+        {
+          this.props.title
+        }
         <TweenOne
           animation={this.state.boxAnim}
           className="right-side blur"

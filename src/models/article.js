@@ -1,31 +1,40 @@
-import { query } from '../services/api';
+import { fetchArticle } from '../services/api';
 
 export default {
 
   namespace: 'article',
 
   state: {
+    id: '',
     version: '',
-    articleList: [],
-    tags: [],
+    mdContent: '',
   },
 
   subscriptions: {
     setupHistory({ dispatch, history }) {  // eslint-disable-line
-      return history.listen(({ pathname }) => {
-        if (pathname === '/' || pathname === '/tags') {
-          dispatch({ type: 'fetch' });
+      return history.listen(({ pathname, hash }) => {
+        if (pathname === '/article' && hash) {
+          dispatch({ type: 'fetch', payload: { id: hash } });
         }
       });
     },
   },
 
   effects: {
-    *fetch({ payload }, { call, put, select }) {  // eslint-disable-line
-      const { data: { articleList, tags, version } } = yield call(query);
+    *fetch({ payload: { id } }, { call, put, select }) {  // eslint-disable-line
+      const currentId = yield select(_ => _.article.id);
+      let newId = '';
+      if (id) {
+        newId = id;
+      } else if (currentId && !id) {
+        newId = currentId;
+      } else {
+        return;
+      }
+      const { data: { mdContent, version } } = yield call(fetchArticle, { newId });
       const { currentVersion } = yield select(_ => _.article.version);
       if (version !== currentVersion) {
-        yield put({ type: 'save', payload: { articleList, tags } });
+        yield put({ type: 'save', payload: { mdContent } });
       }
     },
   },

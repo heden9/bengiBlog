@@ -154,8 +154,31 @@
     }
   }
   &.blue .icon-font {
+    color: rgb(225, 166, 121);
     &:hover {
       color: @hover-blue;
     }
   }
+}
+
+.title-group {
+
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }

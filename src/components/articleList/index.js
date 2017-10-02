@@ -21,15 +21,15 @@ export default function articelList({ data }) {
   );
 }
 
-const ArticleItem = ({ title, label, time, content }) => {
+const ArticleItem = ({ title, subTitle, label, time, id, content }) => {
   return (
     <li className="article-item">
       <div className="item-bar">
         <img src={antvIcon} className="icon" alt="" />
         <span>来自标签：{label}</span>
       </div>
-      <Link className="article-title" to="">{title}</Link>
-      <Link className="word" to="">{content}</Link>
+      <Link className="article-title" to={`/article?title=${title}&subTitle=${subTitle}#${id}`}>{title}</Link>
+      <Link className="word" to={`/article?title=${title}&subTitle=${subTitle}#${id}`}>{content}</Link>
       <time>{time}</time>
     </li>
   );

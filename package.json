@@ -15,6 +15,7 @@
     "classnames": "^2.2.5",
     "dva": "^1.2.1",
     "enquire.js": "^2.1.6",
+    "github-markdown-css": "^2.8.0",
     "less-vars-to-js": "^1.2.0",
     "rc-tween-one": "^1.4.5",
     "react": "^15.4.0",

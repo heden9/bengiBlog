@@ -46,7 +46,7 @@ function AboutMe() {
 }
 
 
-function mapStateToProps({ article: { articleList, tags } }) {
+function mapStateToProps({ home: { articleList, tags } }) {
   return {
     articleList,
     tags,

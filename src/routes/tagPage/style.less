@@ -4,10 +4,13 @@
   background-attachment: fixed;
   height: 800px;
 }
+@tab-margin: 20px;
 .tag-container {
 
   .tag-menu {
     border: none;
+    margin-left: @tab-margin;
+    margin-right: @tab-margin;
     .tag-item {
       &:hover {
         color: white;
@@ -19,6 +22,8 @@
 }
 .detail-list {
   padding: 10px 0;
+  margin-left: @tab-margin;
+  margin-right: @tab-margin;
   .list-section {
     margin-bottom: 10px;
     .article-title {

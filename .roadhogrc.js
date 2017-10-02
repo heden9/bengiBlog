@@ -11,6 +11,11 @@ export default {
   disableCSSModules: true,
   // 接口代理示例
   proxy: {
+    "/api": {
+      "target": "http://localhost:3000",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    },
   },
   env: {
     development: {

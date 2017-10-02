@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import TagMenu from '../../components/tags';
-import Banner from '../../components/tagBanner';
 import antvIcon from '../../assets/svg/antv.svg';
 import './style.less';
 
-function mapStateToProps({ article: { tags } }) {
+function mapStateToProps({ home: { tags } }) {
   return {
     tags,
   };
@@ -14,7 +13,6 @@ function mapStateToProps({ article: { tags } }) {
 function TagPage({ tags }) {
   return (
     <div>
-      <Banner />
       <div className="tag-container">
         <div className="wrapper">
           <TagMenu tags={tags} />
@@ -40,7 +38,7 @@ function DetailList({ tags }) {
                 {
                   item.articles.map((ditem) => {
                     return (
-                      <Link to="" className="article-title" key={`articles${ditem.id}`}>{ditem.title}</Link>
+                      <Link to={`/article?title=${ditem.title}&subTitle=${ditem.subTitle}#${ditem.id}`} className="article-title" key={`articles${ditem.id}`}>{ditem.title}</Link>
                     );
                   })
                 }
