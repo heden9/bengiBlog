@@ -4,7 +4,7 @@ import { Pagination } from 'antd';
 import './style.less';
 import antvIcon from '../../assets/svg/antv.svg';
 
-export default function articelList({ data }) {
+export default function articelList({ data, page }) {
   return (
     <ul className="article-list">
       {
@@ -15,21 +15,27 @@ export default function articelList({ data }) {
         })
       }
       <li className="pagination">
-        <Pagination simple defaultCurrent={2} total={50} />
+        <Pagination simple defaultCurrent={page} total={1} />
       </li>
     </ul>
   );
 }
 
 const ArticleItem = ({ title, subTitle, label, time, id, content }) => {
+  const state = {
+    title,
+    id,
+    time,
+    subTitle,
+  };
   return (
     <li className="article-item">
       <div className="item-bar">
         <img src={antvIcon} className="icon" alt="" />
-        <span>来自标签：{label}</span>
+        <span>来自标签：{label.join('、')}</span>
       </div>
-      <Link className="article-title" to={`/article?title=${title}&subTitle=${subTitle}#${id}`}>{title}</Link>
-      <Link className="word" to={`/article?title=${title}&subTitle=${subTitle}#${id}`}>{content}</Link>
+      <Link className="article-title" to={'/article'} state={state}>{title}</Link>
+      <Link className="word" to={'/article'} state={state}>{content}</Link>
       <time>{time}</time>
     </li>
   );

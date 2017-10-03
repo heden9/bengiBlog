@@ -7,21 +7,24 @@ export default {
   state: {
     id: '',
     version: '',
+    title: '',
+    subTitle: '',
+    time: '',
     mdContent: '',
   },
 
   subscriptions: {
     setupHistory({ dispatch, history }) {  // eslint-disable-line
-      return history.listen(({ pathname, hash }) => {
-        if (pathname === '/article' && hash) {
-          dispatch({ type: 'fetch', payload: { id: hash } });
+      return history.listen(({ pathname, state }) => {
+        if (pathname === '/article' && state) {
+          dispatch({ type: 'fetch', payload: { ...state } });
         }
       });
     },
   },
 
   effects: {
-    *fetch({ payload: { id } }, { call, put, select }) {  // eslint-disable-line
+    *fetch({ payload: { id, title, subTitle, time } }, { call, put, select }) {  // eslint-disable-line
       const currentId = yield select(_ => _.article.id);
       let newId = '';
       if (id) {
@@ -31,10 +34,10 @@ export default {
       } else {
         return;
       }
-      const { data: { mdContent, version } } = yield call(fetchArticle, { newId });
+      const { data: { mdContent, version } } = yield call(fetchArticle, { id: newId });
       const { currentVersion } = yield select(_ => _.article.version);
       if (version !== currentVersion) {
-        yield put({ type: 'save', payload: { mdContent } });
+        yield put({ type: 'save', payload: { mdContent, title, subTitle, time } });
       }
     },
   },

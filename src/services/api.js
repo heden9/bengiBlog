@@ -8,6 +8,9 @@ export async function query() {
 export async function fetchArticle({ id }) {
   return request('/api/article', {
     method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
     body: JSON.stringify({ id }),
   });
 }

@@ -8,6 +8,7 @@ export default {
     version: '',
     articleList: [],
     tags: [],
+    page: 1,
   },
 
   subscriptions: {
@@ -25,7 +26,7 @@ export default {
       const { data: { articleList, tags, version } } = yield call(query);
       const { currentVersion } = yield select(_ => _.home.version);
       if (version !== currentVersion) {
-        yield put({ type: 'save', payload: { articleList, tags } });
+        yield put({ type: 'save', payload: { articleList, tags, version } });
       }
     },
   },

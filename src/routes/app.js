@@ -10,14 +10,14 @@ import bengiLogo from '../assets/bengi.png';
 import './app.less';
 
 
-function App({ children, redNavbar, isNavbar, blueNavbar, location }) {
+function App({ children, redNavbar, isNavbar, blueNavbar, query }) {
   return (
     <div>
       <Navigation isNavbar={isNavbar} redNavbar={redNavbar} blueNavbar={blueNavbar} />
       {
         (redNavbar || blueNavbar) && // 红色蓝色主题切换
         <Banner
-          title={<Title redNavbar={redNavbar} query={location.query} blueNavbar={blueNavbar} />}
+          title={<Title redNavbar={redNavbar} query={query} blueNavbar={blueNavbar} />}
           redNavbar={redNavbar} blueNavbar={blueNavbar}
         />
       }
@@ -42,7 +42,7 @@ function Title({ blueNavbar, redNavbar, query }) {
       <div className="article-group fadeInDown animated">
         <h2>{query.title}</h2>
         <h4>{query.subTitle}</h4>
-        <h4>Posted by Bengi September 30, 2017</h4>
+        <h4>{query.time}</h4>
       </div>
     );
   }
@@ -70,11 +70,18 @@ function Footer({ blueNavbar }) {
 
   );
 }
-function mapStateToProps({ app: { isNavbar, blueNavbar, redNavbar } }) {
+
+function mapStateToProps({ app: { isNavbar, blueNavbar, redNavbar }, article }) {
+  const { title, subTitle, time } = article;
   return {
     isNavbar,
     blueNavbar,
     redNavbar,
+    query: {
+      title,
+      subTitle,
+      time,
+    },
   };
 }
 export default connect(mapStateToProps)(App);

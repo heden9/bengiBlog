@@ -6,7 +6,7 @@ import './style.less';
 export default function TagMenu({ tags, title }) {
   return (
     <div className="tag-menu">
-      <Link to="" className="article-title small">{title}</Link>
+      <Link to="/tags" className="article-title small">{title}</Link>
       <div className="content">
         {
           tags.map((item) => {

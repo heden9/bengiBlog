@@ -8,7 +8,7 @@ import ArticleList from '../../components/articleList';
 import TagMenu from '../../components/tags';
 import IconFont from '../../components/icon';
 
-function Home({ articleList, tags }) {
+function Home({ articleList, tags, page }) {
   return (
     <div className="home-container">
       <Banner />
@@ -16,7 +16,7 @@ function Home({ articleList, tags }) {
         <div className="wrapper">
           <Row type="flex" align="space-between" >
             <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-              <ArticleList data={articleList} />
+              <ArticleList data={articleList} page={page} />
             </Col>
             <Col xs={24} sm={24} md={6} lg={6} xl={6}>
               <TagMenu tags={tags} title={'FEATURED TAGS'} />
@@ -46,10 +46,11 @@ function AboutMe() {
 }
 
 
-function mapStateToProps({ home: { articleList, tags } }) {
+function mapStateToProps({ home: { articleList, tags, page } }) {
   return {
     articleList,
     tags,
+    page,
   };
 }
 
