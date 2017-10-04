@@ -3,7 +3,13 @@ import { connect } from 'dva';
 import 'github-markdown-css';
 import './style.less';
 
-function mapStateToProps({ article: { mdContent } }) {
+function mapStateToProps({ article }, { location }) {
+  if (!article[location.state.id]) {
+    return {
+      mdContent: 'loading',
+    };
+  }
+  const { mdContent } = article[location.state.id];
   return {
     mdContent,
   };

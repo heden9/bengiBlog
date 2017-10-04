@@ -10,14 +10,14 @@ import bengiLogo from '../assets/bengi.png';
 import './app.less';
 
 
-function App({ children, redNavbar, isNavbar, blueNavbar, query }) {
+function App({ children, redNavbar, isNavbar, blueNavbar, location }) {
   return (
     <div>
       <Navigation isNavbar={isNavbar} redNavbar={redNavbar} blueNavbar={blueNavbar} />
       {
         (redNavbar || blueNavbar) && // 红色蓝色主题切换
         <Banner
-          title={<Title redNavbar={redNavbar} query={query} blueNavbar={blueNavbar} />}
+          title={<Title pathname={location.pathname} query={location.state} />}
           redNavbar={redNavbar} blueNavbar={blueNavbar}
         />
       }
@@ -29,15 +29,15 @@ function App({ children, redNavbar, isNavbar, blueNavbar, query }) {
     </div>
   );
 }
-function Title({ blueNavbar, redNavbar, query }) {
-  if (blueNavbar) {
+function Title({ pathname, query }) {
+  if (pathname === '/tags') {
     return (
       <div className="title-group fadeInDown animated">
         <h1>Tags</h1>
         <h4>If You Can Make It Here<br /> You Can Make It Anywhere</h4>
       </div>
     );
-  } else if (redNavbar) {
+  } else if (pathname === '/article') {
     return (
       <div className="article-group fadeInDown animated">
         <h2>{query.title}</h2>
@@ -45,6 +45,8 @@ function Title({ blueNavbar, redNavbar, query }) {
         <h4>{query.time}</h4>
       </div>
     );
+  } else {
+    return null;
   }
 }
 function Footer({ blueNavbar }) {
@@ -71,17 +73,11 @@ function Footer({ blueNavbar }) {
   );
 }
 
-function mapStateToProps({ app: { isNavbar, blueNavbar, redNavbar }, article }) {
-  const { title, subTitle, time } = article;
+function mapStateToProps({ app: { isNavbar, blueNavbar, redNavbar } }) {
   return {
     isNavbar,
     blueNavbar,
     redNavbar,
-    query: {
-      title,
-      subTitle,
-      time,
-    },
   };
 }
 export default connect(mapStateToProps)(App);

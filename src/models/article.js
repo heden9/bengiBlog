@@ -5,39 +5,24 @@ export default {
   namespace: 'article',
 
   state: {
-    id: '',
-    version: '',
-    title: '',
-    subTitle: '',
-    time: '',
-    mdContent: '',
   },
 
   subscriptions: {
     setupHistory({ dispatch, history }) {  // eslint-disable-line
       return history.listen(({ pathname, state }) => {
         if (pathname === '/article' && state) {
-          dispatch({ type: 'fetch', payload: { ...state } });
+          dispatch({ type: 'fetch', payload: { id: state.id } });
         }
       });
     },
   },
 
   effects: {
-    *fetch({ payload: { id, title, subTitle, time } }, { call, put, select }) {  // eslint-disable-line
-      const currentId = yield select(_ => _.article.id);
-      let newId = '';
-      if (id) {
-        newId = id;
-      } else if (currentId && !id) {
-        newId = currentId;
-      } else {
-        return;
-      }
-      const { data: { mdContent, version } } = yield call(fetchArticle, { id: newId });
-      const { currentVersion } = yield select(_ => _.article.version);
+    *fetch({ payload: { id } }, { call, put, select }) {  // eslint-disable-line
+      const { currentVersion } = yield select(data => (data.article[id] ? data.article[id].version : ''));
+      const { data: { mdContent, version } } = yield call(fetchArticle, { id });
       if (version !== currentVersion) {
-        yield put({ type: 'save', payload: { mdContent, title, subTitle, time } });
+        yield put({ type: 'save', payload: { [id]: { mdContent, version } } });
       }
     },
   },
