@@ -12,7 +12,7 @@ export default {
   // 接口代理示例
   proxy: {
     "/api": {
-      "target": "http://localhost:3000",
+      "target": "http://localhost:3000/api",
       "changeOrigin": true,
       "pathRewrite": { "^/api" : "" }
     },

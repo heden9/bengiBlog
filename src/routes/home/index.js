@@ -33,6 +33,7 @@ function AboutMe() {
   return (
     <div className="tag-menu about-me">
       <Link to="" className="article-title small">ABOUT ME</Link>
+      <div className="avatar" />
       <p className="word">专注于移动开发，分享知识，共享快乐。</p>
       <div className="icon-group">
         <Link to=""><IconFont type="weixin" /></Link>

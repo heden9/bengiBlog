@@ -10,6 +10,7 @@
   .home-content {
     .about-me{
       .word {
+        text-align: center;
         color: @deep-gray !important;
         font-weight: bold;
       }
@@ -17,6 +18,7 @@
     .icon-group {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
       align-items: center;
       padding: 20px 0;
       >a{
@@ -36,4 +38,12 @@
       }
     }
   }
+}
+@head_width: 100px;
+.avatar {
+  margin: 20px auto;
+  border-radius: 50%;
+  width: @head_width;
+  height: @head_width;
+  background: url('../../assets/IMG_4022.JPG') center center/cover;
 }
