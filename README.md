@@ -60,6 +60,6 @@
 
 ### 五、截图
 ***
-
-![首页](./screenshot/3.png)![标签页](./screenshot/2.png) 
-![文章页](./screenshot/4.png)
+|首页|标签页|文章页|
+|:--:|:--:|:--:|
+|![首页](./screenshot/3.png)|![标签页](./screenshot/2.png)|![文章页](./screenshot/4.png)
