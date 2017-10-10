@@ -1,5 +1,7 @@
 # bengi's blog
 
+![结构](./screenshot/bengi-blue.png)
+
 [![React](https://img.shields.io/badge/react-^15.4.0-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^2.13.3-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![dva](https://img.shields.io/badge/dva-^1.2.1-orange.svg?style=flat-square)](https://github.com/dvajs/dva)
@@ -55,3 +57,8 @@
 组件单独用文件进行管理，包含 index.js 和 style.less 
 2.  把 state 集中管理，把大部分状态都存入 store 中，这样可以方便做本地管理
 3.  使用es7的 **async/await** 处理fetch, 统一做错误处理
+
+### 五、截图
+***
+
+![结构](./screenshot/1.png)
