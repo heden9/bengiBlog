@@ -61,5 +61,5 @@
 ### 五、截图
 ***
 
-![结构](./screenshot/1.png) ![结构](./screenshot/2.png)
-![结构](./screenshot/3.png) ![结构](./screenshot/4.png)
+![首页](./screenshot/3.png)![标签页](./screenshot/2.png) 
+![文章页](./screenshot/4.png)
