@@ -37,14 +37,8 @@ function DetailList({ tags }) {
               <div>
                 {
                   item.articles.map((ditem) => {
-                    const state = {
-                      title: ditem.title,
-                      time: ditem.time,
-                      id: ditem.id,
-                      subTitle: ditem.subTitle,
-                    };
                     return (
-                      <Link to={'/article'} state={state} className="article-title" key={`articles${ditem.id}`}>{ditem.title}</Link>
+                      <Link to={`/article/${ditem.id}`} className="article-title" key={`articles${ditem.id}`}>{ditem.title}</Link>
                     );
                   })
                 }

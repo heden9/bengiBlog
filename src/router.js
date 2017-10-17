@@ -11,7 +11,7 @@ function RouterConfig({ history }) {
       <Route path="/" component={App} >
         <IndexRoute component={Home} />
         <Route path="/tags" component={Tags} />
-        <Route path="/article" component={Article} />
+        <Route path="/article/:id" component={Article} />
       </Route>
     </Router>
   );

@@ -1870,6 +1870,12 @@ duplexer@^0.1.1:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/duplexer/download/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
 
+dva-loading@^1.0.2:
+  version "1.0.2"
+  resolved "http://registry.npm.taobao.org/dva-loading/download/dva-loading-1.0.2.tgz#5f1800e09b44dd5236ab1c1a31dc92a4ba1d240a"
+  dependencies:
+    babel-runtime "^6.26.0"
+
 dva@^1.2.1:
   version "1.2.1"
   resolved "http://registry.npm.taobao.org/dva/download/dva-1.2.1.tgz#b9e78a4f1812b2230134d1bb7baadd1af3630138"
@@ -4135,6 +4141,10 @@ path-parse@^1.0.5:
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "http://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
+
+path-to-regexp@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/path-to-regexp/download/path-to-regexp-2.0.0.tgz#b77a8168c2e78bc31f3d312d71b1ace97df23870"
 
 path-type@^1.0.0:
   version "1.1.0"

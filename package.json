@@ -14,9 +14,11 @@
     "babel-runtime": "^6.9.2",
     "classnames": "^2.2.5",
     "dva": "^1.2.1",
+    "dva-loading": "^1.0.2",
     "enquire.js": "^2.1.6",
     "github-markdown-css": "^2.8.0",
     "less-vars-to-js": "^1.2.0",
+    "path-to-regexp": "^2.0.0",
     "rc-tween-one": "^1.4.5",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"

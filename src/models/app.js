@@ -60,9 +60,9 @@ export default {
             }
           }, 0);
         }
-        if (location.pathname !== '/article') {
+        if (!location.pathname.startsWith('/article')) {
           redNavbar = false;
-        } else if (location.pathname === '/article') {
+        } else if (location.pathname.startsWith('/article')) {
           setTimeout(() => {
             document.getElementById('root').scrollIntoView();
           }, 0);

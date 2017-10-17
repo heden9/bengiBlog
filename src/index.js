@@ -1,10 +1,11 @@
 import dva from 'dva';
+import createLoading from 'dva-loading';
 import { message } from 'antd';
 import './index.less';
 
 let initialState = {};
-if (sessionStorage.getItem('BENGIBLOG')) {
-  initialState = JSON.parse(sessionStorage.getItem('BENGIBLOG'));
+if (localStorage.getItem('BENGIBLOG')) {
+  initialState = JSON.parse(localStorage.getItem('BENGIBLOG'));
 }
 // 1. Initialize
 const app = dva({
@@ -15,9 +16,9 @@ const app = dva({
 });
 
 // 2. Plugins
-// app.use({});
+app.use(createLoading());
 window.beforeunload = window.onunload = () => {
-  sessionStorage.setItem('BENGIBLOG', JSON.stringify(app._store.getState()));
+  localStorage.setItem('BENGIBLOG', JSON.stringify(app._store.getState()));
 };
 // 3. Model
 app.model(require('./models/home'));
