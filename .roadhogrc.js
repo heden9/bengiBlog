@@ -6,9 +6,15 @@ const svgSpriteDirs = [
 ];
 
 export default {
-  entry: 'src/index.js',
+  multipage: true,
+  entry: {
+    app: "./src/index.js",
+    common: "./src/vendor.js",
+  },
+  // entry: "./src/index.js",
   // svgSpriteLoaderDirs: svgSpriteDirs,
   disableCSSModules: true,
+  hash: true,
   // 接口代理示例
   proxy: {
     "/api": {
@@ -26,7 +32,7 @@ export default {
           "import", {
           "libraryName": "antd",
           "style": true
-        }
+          }
         ]
       ]
     },
