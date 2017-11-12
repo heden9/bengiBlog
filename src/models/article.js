@@ -1,8 +1,6 @@
 import pathToRegexp from 'path-to-regexp';
 import { message } from 'antd';
 import { fetchArticle } from '../services/api';
-import '../utils/prism.css';
-import '../utils/prism.js';
 
 export default {
 

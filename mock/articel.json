@@ -1,7 +1,7 @@
 [
   {
     "id": "a001",
-    "label": "Antv",
+    "label": ["Antv"],
     "labelIcon": "",
     "title": "React Native 集成分享第三方登录功能分享第三方登录模块开发(Android)",
     "subTitle": "如何在React Native中实现分享和第三方登录的功能",
@@ -10,7 +10,7 @@
   },
   {
     "id": "a002",
-    "label": "React",
+    "label": ["React"],
     "labelIcon": "",
     "title": "教你轻松在React Native中集成统计的功能",
     "subTitle": "React Native 集成统计的功能",
@@ -19,7 +19,7 @@
   },
   {
     "id": "a003",
-    "label": "React",
+    "label": ["React"],
     "labelIcon": "",
     "title": "React Native 集成分享第三方登录功能分享第三方登录模块开发(Android)",
     "subTitle": "如何在React Native中实现分享和第三方登录的功能",
@@ -28,7 +28,7 @@
   },
   {
     "id": "a004",
-    "label": "React",
+    "label": ["React"],
     "labelIcon": "",
     "title": "教你轻松在React Native中集成统计的功能",
     "subTitle": "React Native 集成统计的功能",

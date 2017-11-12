@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'dva';
 import 'github-markdown-css';
+import '../../utils/prism.css';
 import './style.less';
+import { prism } from '../../utils/prism';
 
 function mapStateToProps({ article }, { params }) {
   if (!article[params.id]) {
@@ -21,4 +23,15 @@ function Article({ mdContent }) {
     </div>
   );
 }
-export default connect(mapStateToProps)(Article);
+
+class ArticleContainer extends React.PureComponent {
+  componentDidMount() {
+    prism();
+  }
+  render() {
+    return (
+      <Article {...this.props} />
+    );
+  }
+}
+export default connect(mapStateToProps)(ArticleContainer);
