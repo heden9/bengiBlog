@@ -6,7 +6,10 @@ import ticker from 'rc-tween-one/lib/ticker';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './style.less';
-
+function newTicker(timer, ...arg){
+  ticker.clear(timer);
+  return ticker.interval(...arg);
+}
 export default class LogoGather extends React.Component {
   static propTypes = {
     image: PropTypes.string,
@@ -57,7 +60,7 @@ export default class LogoGather extends React.Component {
     if (this.gather) {
       this.updateTweenData();
     }
-    this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
+    this.interval = newTicker(this.inverval,this.updateTweenData, this.intervalTime);
   };
   setDataToDom(data, w, h) {
     this.pointArray = [];
@@ -104,7 +107,7 @@ export default class LogoGather extends React.Component {
       children,
       boxAnim: { opacity: 0, type: 'from', duration: 800 },
     }, () => {
-      this.interval = ticker.interval(this.updateTweenData, this.intervalTime);
+      this.interval = newTicker(this.inverval,this.updateTweenData, this.intervalTime);
     });
   }
 
@@ -167,10 +170,14 @@ export default class LogoGather extends React.Component {
   };
 
   updateTweenData = () => {
-    this.dom = ReactDOM.findDOMNode(this);
-    this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
-    ((this.gather && this.disperseData) || this.gatherData)();
-    this.gather = !this.gather;
+    try{
+      this.dom = ReactDOM.findDOMNode(this);
+      this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
+      ((this.gather && this.disperseData) || this.gatherData)();
+      this.gather = !this.gather;
+    }catch(e){
+      console.log('😞');
+    }
   };
 
   render() {
