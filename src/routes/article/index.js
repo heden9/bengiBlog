@@ -17,6 +17,7 @@ function mapStateToProps({ article }, { params }) {
   };
 }
 function Article({ mdContent }) {
+  setImmediate(prism);
   return (
     <div className="wrapper">
       <div className="markdown-body" dangerouslySetInnerHTML={{ __html: mdContent }} />
@@ -24,14 +25,14 @@ function Article({ mdContent }) {
   );
 }
 
-class ArticleContainer extends React.PureComponent {
-  componentDidMount() {
-    prism();
-  }
-  render() {
-    return (
-      <Article {...this.props} />
-    );
-  }
-}
-export default connect(mapStateToProps)(ArticleContainer);
+// class ArticleContainer extends React.PureComponent {
+//   componentDidMount() {
+//     prism();
+//   }
+//   render() {
+//     return (
+//       <Article {...this.props} />
+//     );
+//   }
+// }
+export default connect(mapStateToProps)(Article);

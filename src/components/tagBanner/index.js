@@ -173,10 +173,9 @@ export default class LogoGather extends React.Component {
     try{
       this.dom = ReactDOM.findDOMNode(this);
       this.sideBox = ReactDOM.findDOMNode(this.sideBoxComp);
-      this && ((this.gather && this.disperseData) || this.gatherData)();
+      ((this.gather && this.disperseData) || this.gatherData)();
       this.gather = !this.gather;
     }catch(e){
-      console.log('😞，我有点不好');
     }
   };
 
