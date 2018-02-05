@@ -12,7 +12,7 @@
 ## 特性
 
 -   基于[react](https://github.com/facebook/react)，[ant-design](https://github.com/ant-design/ant-design)，[dva](https://github.com/dvajs/dva)
--   使用[bengi-cli](https://github.com/w771854332/bengi-cli)构建，React Isomorphic 的个人实践
+-   使用[bengi-cli](https://github.com/w771854332/bengi-cli)构建，React Isomorphic 的个人实践
 -   基于[ant-motion](https://github.com/ant-design/ant-motion)实现动效
 
 
@@ -31,5 +31,5 @@
 ```
 
 
-哈哈，总算给博客重构完成了，自己的脚手架也算有了一个demo
+哈哈, 总算给博客重构完成了，自己的脚手架也算有了一个demo
 
