@@ -7,7 +7,7 @@
 [![MIT](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-演示地址 <http://blog.bengiw.com:3333>
+演示地址 <http://blog.bengiw.com>
 
 ## 特性
 
@@ -31,5 +31,5 @@
 ```
 
 
-哈哈, 总算给博客重构完成了，自己的脚手架也算有了一个demo
+哈哈，总算给博客重构完成了，自己的脚手架也算有了一个demo
 

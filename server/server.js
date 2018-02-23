@@ -24,9 +24,8 @@ app.use(session({
   secret: 'bengi' // 盐
 }))
 app.use('/api', require('./proxy'))
-if (!isDEV) {
-  const serverEntry = require('../dist/server-entry') // nodeJS中的require，不会默认拿到export default的内容
 
+if (!isDEV) {
   // readFileSync 同步执行读的操作，utf8指定编码格式，默认为nodeJS中的buffer。
   const template = fs.readFileSync(path.join(__dirname, '../dist/server.ejs'), 'utf8')
 
@@ -34,9 +33,13 @@ if (!isDEV) {
   app.use('/public', express.static(path.join(__dirname, '../dist'), {
     maxAge: 3600 * 31 * 24
   }))
-
+  app.use(function (req, res, next) {
+    // delete require.cache[require.resolve('../dist/server-entry')]
+    req.serverEntry = require('../dist/server-entry') // nodeJS中的require，不会默认拿到export default的内容
+    next()
+  })
   // 从浏览器端发出的任何请求，都返回服务端渲染代码，但要排除静态资源
-  PrePareData(app, template, serverEntry)
+  PrePareData(app, template)
 } else {
   const devStatic = require('./utils/dev-static')
   devStatic(app)
