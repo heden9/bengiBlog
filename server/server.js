@@ -2,6 +2,7 @@
  * 服务端入口
  */
 const express = require('express')
+const https = require('https')
 const fs = require('fs')
 const path = require('path')
 const bodyParser = require('body-parser')
@@ -45,6 +46,17 @@ if (!isDEV) {
   devStatic(app)
 }
 
+try {
+  const options = {
+    key: fs.readFileSync('~/ssl/server.key'),
+    cert: fs.readFileSync('~/ssl/server.crt')
+  }
+  https.createServer(options, app).listen(443, function () {
+    console.log('https server is listening on 443')
+  })
+} catch (error) {
+  console.log(error.message)
+}
 app.listen(3333, function () {
   console.log('server is listening on 3333')
 })
